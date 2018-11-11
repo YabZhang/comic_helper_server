@@ -1,0 +1,16 @@
+blinker==1.4
+Click==7.0
+Flask==1.0.2
+Flask-Redis==0.3.0
+Flask-Script==2.0.6
+Flask-SQLAlchemy==2.3.2
+Flask-WTF==0.14.2
+itsdangerous==1.1.0
+Jinja2==2.10
+MarkupSafe==1.1.0
+raven==6.9.0
+redis==2.10.6
+SQLAlchemy==1.2.14
+ujson==1.35
+Werkzeug==0.14.1
+WTForms==2.2.1
