@@ -26,7 +26,12 @@ def init_blueprints(app):
 
         需要初始化好本文件的全局变量后调用，否则 blueprint 内无法 import 本文件的变量
     """
-    return
+
+    from app.manga import manga
+
+    app.register_blueprint(manga, url_prefix="/api/manga")
+
+    return True
 
 
 def init_redis(app):

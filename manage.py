@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
-from app import create_app
+from app import create_app, db
 
 from flask_script import Manager
 
@@ -73,6 +73,11 @@ def debugserver(host=config.DEV_HOST, port=config.DEV_PORT):
     app.run(debug=True, host=host, port=port)
 
 
+@manager.command
+def create_db():
+    db.metadata.create_all(bind=db.engine)
+
+
 @app.errorhandler(500)
 def internal_server_error(errors):
     trace = traceback.format_exc()
@@ -82,3 +87,4 @@ def internal_server_error(errors):
 
 if __name__ == '__main__':
     manager.run()
+    # debugserver()
