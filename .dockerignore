@@ -1,0 +1,15 @@
+*.swp
+*.bak
+*.pyc
+__pycache__
+.DS_Store
+
+build/*
+data/*
+tmp
+# config.py
+
+.idea/*
+.python-version
+.env
+myapp/*
