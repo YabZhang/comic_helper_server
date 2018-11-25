@@ -1,3 +1,9 @@
+# `comic-helper` database
+create database `comic-helper` character set utf8mb4 collate utf8mb4_unicode_ci;
+
+# change to new db
+use `comic-helper`;
+
 # `manga` table
 CREATE TABLE `manga` (
   `id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT 'ID',
