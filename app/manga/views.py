@@ -29,7 +29,8 @@ def manga_list():
 @manga.route("/hot_manga_list", methods=["GET"])
 def hot_manga_list():
     """热门番剧列表"""
-    result = get_hot_manga_list()
+    top_n = request.args.get("top_n", 10, type=int)
+    result = get_hot_manga_list(top_n)
     return jsonify(result)
 
 

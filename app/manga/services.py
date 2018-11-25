@@ -18,7 +18,9 @@ def get_manage_list(page_num, page_size):
 
     data_list = []
     for item in items:
-        data_list.append(item.to_dict())
+        item_dict = item.to_dict()
+        item_dict["labels"] = get_manga_labels(item.id)
+        data_list.append(item_dict)
 
     return data_list
 
@@ -50,7 +52,9 @@ def do_manga_search(keyword):
 
     data_list = []
     for item in items:
-        data_list.append(item.to_dict())
+        item_dict = item.to_dict()
+        item_dict["labels"] = get_manga_labels(item.id)
+        data_list.append(item_dict)
 
     return data_list
 

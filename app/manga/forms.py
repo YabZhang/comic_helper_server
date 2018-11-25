@@ -29,4 +29,4 @@ class MangaDetailForm(FlaskForm):
 
 
 class MangaSearchForm(FlaskForm):
-    keyword = StringField(validators=[DataRequired(), Length(min=1, max=5)])
+    keyword = StringField(validators=[DataRequired(), Length(min=1, max=30)])

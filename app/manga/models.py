@@ -28,10 +28,10 @@ class Manga(db.Model):
             "id": self.id,
             "name": self.name,
             "cover_url": self.cover_url,
-            "start_time": self.start_time,
-            "update_time": self.update_time,
-            "description": self.description,
-            "bili_score": self.bili_score,
+            "start_time": self.start_time or "暂无",
+            "update_time": self.update_time or "暂无",
+            "description": self.description.strip(),
+            "bili_score": self.bili_score or "暂无",
         }
 
 
