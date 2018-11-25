@@ -15,3 +15,5 @@ ujson==1.35
 Werkzeug==0.14.1
 WTForms==2.2.1
 PyMySQL==0.7.11
+requests
+bs4
