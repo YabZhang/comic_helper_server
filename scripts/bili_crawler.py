@@ -18,7 +18,7 @@ from app.manga.models import Manga, Label, MangaLabelRef
 
 app = create_app()
 
-SAVE_INTO_DB = True
+SAVE_INTO_DB = False
 
 
 logging.basicConfig(level=logging.INFO)
@@ -36,12 +36,16 @@ def get_manga_detail_data(media_id):
     logging.info("[get_mana_detail_data] start! media_id: %s" % media_id)
 
     time.sleep(random.random() * 0.1)
-    try:
-        res = requests.get(detail_url, verify=False)
-        res.raise_for_status()
-    except Exception as e:
-        logging.exception(e)
-        return None
+    for n in range(3):
+        try:
+            res = requests.get(detail_url, verify=False)
+            res.raise_for_status()
+            break
+        except Exception as e:
+            logging.error("get detail data error! %s, retry: %n", str(e), n+1)
+            if n >= 2:
+                return None
+            # return None
 
     detail_data = {}
     bs = BeautifulSoup(res.text, features="html.parser")
@@ -81,6 +85,11 @@ def get_manga_page_data(page_num):
 
         if item["media_id"]:
             detail_data = get_manga_detail_data(item["media_id"])
+            if not detail_data:
+                # pass this item
+                logging.error("get detail data failed! media_id: %s", item["media_id"])
+                continue
+
             item.update(detail_data)
 
         result_list.append(item)
@@ -186,4 +195,4 @@ def save_manga_data(manga_list):
 
 if __name__ == "__main__":
     with app.app_context():
-        crawl_manga_list_data(20)
+        crawl_manga_list_data(10)
