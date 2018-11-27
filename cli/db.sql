@@ -38,3 +38,6 @@ CREATE TABLE `manga_label_ref` (
   `modify_time` datetime NOT NULL COMMENT '数据更新时间',
   `deleted` tinyint(4) NOT NULL DEFAULT 0 COMMENT '状态: 0,正常; 1,删除'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='动漫标签关系';
+
+# add index for manga search
+alter table manga add index (deleted, name(10));
